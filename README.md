@@ -21,4 +21,15 @@
     当然需要使用系统当前的locale对象，可以通过：LocaleContextHolder.getLocale();
     或者RequestContextUtils.getLocale(request);获取
     
+### 国际化LocaleResolver
+    springboot默认采用AcceptHeaderLocaleResolver来解析国际化信息，但是这个Resolver是根据浏览器所在的
+    操作系统的内核区域设置来决定语言的，一般使用的少
+    采用会话Resolver，SessionLocaleResolver，在用户请求的当前会话过程中有效，用户下一次请求时恢复到原来的
+    语言设置
+    还包含其他Resolver
+    CookieLocaleResolver
+    FixedLocaleResolver 这个Resolver不允许用户修改语言
     
+    除了使用LocaleResolver.setLocale()来设置语言区域之外，
+    还可以使用拦截器修改语言区域：LocaleChangeInterceptor
+    但是注意这种方式可以和session cookie Resolver一起使用，但是不能和FixedLocaleResolver一起使用，抛异常，我的哥！

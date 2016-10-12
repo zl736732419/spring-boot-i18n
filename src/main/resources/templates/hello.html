@@ -5,6 +5,17 @@
     <title>Hello World</title>
 </head>
 <body>
+
+<form action="/changeSessionLanauage" method="get">
+    <input name="lang" type="hidden" value="zh"  />
+    <button>切换为中文</button>
+</form>
+
+<form action="/changeSessionLanauage" method="get">
+    <input name="lang" type="hidden" value="en" />
+    <button>切换为英文</button>
+</form>
+
 <p><label th:text="#{welcome}"></label></p>
 </body>
 </html>
